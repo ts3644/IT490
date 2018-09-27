@@ -1,4 +1,5 @@
 <html>
+<meta charset="utf-8"/>
 <script>
 
 function HandleLoginResponse(response)
@@ -30,6 +31,12 @@ function SendLoginRequest(username,password)
 <div id="textResponse">
 awaiting response
 </div>
+<form action = "login.php" >
+User 
+<input type = text name = "username" ><br>
+Pass
+<input type = text name = "password" >
+<input type = submit >
 <script>
 SendLoginRequest("kehoed","12345");
 </script>
