@@ -1,7 +1,8 @@
 <?php
-require_once('/home/talha/git/rabbitmqphp_example/testRabbitMQClient.php');
+require_once('/home/talha/git/ITproj/rabbitmqphp_example/testRabbitMQClient.php');
+#require_once('/home/talha/git/rabbitmqphp_example/sample/index.html')
 #$_POST['username'] = $argv[1];
-$username = $_POST['username'];
+$username = $_GET["username"];
 $_POST['password'] = $argv[2];
 
 if (!isset($_POST))
@@ -10,14 +11,18 @@ if (!isset($_POST))
 	echo json_encode($msg);
 	exit(0);
 }
-$request = $_POST;
-$response = "unsupported request type, politely FUCK OFF $username";
+$request = getData($_GET['type'], $_GET['username'], $_GET['password']);
+$response = "unsupported request type, politely FUCK OFF: $username";
 #echo $_POST['username']
-switch ($request["type"])
+switch ($request)
 {
-	case "login":
-		$response = "login, yeah we can do that $username";
+	case "1":
+		$response = "login, yeah we can do that:(Req:$request) $username";
 	break;
+	case "0":
+		$response = "Login, we cant do that ja feels";
+	break;
+	
 }
 echo json_encode($response);
 exit(0);
